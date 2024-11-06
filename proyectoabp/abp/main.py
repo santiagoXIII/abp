@@ -29,9 +29,10 @@ def main(page: ft.Page):
                                 controls=[
                                     ft.Column(
                                             controls=[
-                                                ft.ElevatedButton("¿Que es Steam?",on_click=lambda _: page.go('/STEAM')),
-                                                ft.ElevatedButton("Las STEM en la Historia Uiversal",on_click=lambda _: page.go('/historia')),
-                                                ft.ElevatedButton("ver participantes",on_click= lambda _: page.go("/participantes"))
+                                                ft.Text("Proyecto ABP",size=40,color="#05411c"),
+                                                ft.ElevatedButton("¿Que es Steam?",bgcolor="#05411c", color="#0cf596",on_click=lambda _: page.go('/STEAM')),
+                                                ft.ElevatedButton("Las STEM en la Historia Uiversal",bgcolor="#05411c",color="#0cf596",on_click=lambda _: page.go('/historia')),
+                                                ft.ElevatedButton("ver participantes",bgcolor="#05411c",color="#0cf596",on_click= lambda _: page.go("/participantes"))
                                             ],alignment=MainAxisAlignment.CENTER
                                     )
                                         ],alignment=MainAxisAlignment.CENTER
