@@ -7,7 +7,7 @@ from flet_core.types import MainAxisAlignment
 def main(page: ft.Page):
     #configuracion basica :)
     page.title= "Historia universal y STEM"
-    page.bgcolor="blue"
+    page.bgcolor="#268057"
     page.window_width="800"
     page.window_height="800"
     def route_change(route):
@@ -43,7 +43,7 @@ def main(page: ft.Page):
                     bgcolor=page.bgcolor
                 )
             )
-        #vista que es stem
+        #vista de que es stem
         if page.route == "/STEAM":
             page.views.append(
                 View(
@@ -75,6 +75,119 @@ def main(page: ft.Page):
                         )
                     ],
                     bgcolor=page.bgcolor
+                )
+            )
+        # vista de historia 
+        if page.route== "/historia":
+            page.views.append(
+                View(
+                    "/historia",
+                    controls=[
+                        AppBar(
+                            title=ft.Text("Las STEM en la historia universal",size=15),
+                            bgcolor="gray"
+                        ),
+                        ft.Container(
+                            ft.Row(
+                                controls=[
+                                    ft.Column(
+                                        controls=[
+                                            ft.Text("STEM en la historia universal",size=30),
+                                            ft.ElevatedButton("Las Mujeres en STEM",on_click= lambda _: page.go("/mujeres")),
+                                            ft.ElevatedButton("Movimiento STEM en latinoamerica",on_click=lambda _: page.go("/Latam")),
+                                            ft.ElevatedButton("volver al menu",on_click= lambda _: page.go("/"))
+                                        ],alignment=MainAxisAlignment.CENTER
+                                    )
+                                ],alignment=MainAxisAlignment.CENTER
+                            ),
+                            bgcolor=page.bgcolor,
+                            expand=True
+                        )
+                    ]
+                )
+            )
+        #vista de participantes
+        if page.route=="/participantes":
+            page.views.append(
+                View(
+                    "/participantes",
+                    controls=[
+                        AppBar(
+                            title=ft.Text("participantes del proyecto"),
+                            bgcolor="gray",
+                        ),
+                        ft.Container(
+                            ft.Row(
+                                controls=[
+                                    ft.Column(
+                                        controls=[
+                                            ft.Text("Participantes del proyecto:",size=30),
+                                            ft.Text(">Beltran Gonzalez Bruno Javier"),
+                                            ft.Text(">Cruz Mote Romina "),
+                                            ft.Text(">Vazquez Basilio Angel Santiago"),
+                                            ft.Text(">Yepez Roman Cesar Manuel"),
+                                            ft.ElevatedButton("volver al menu",on_click= lambda _: page.go("/"))
+                                        ],alignment=MainAxisAlignment.CENTER
+                                    ),
+                                ],alignment=MainAxisAlignment.CENTER
+                            ),
+                            bgcolor=page.bgcolor,
+                            expand=True
+                        )
+                    ]
+                )
+            )
+        #vista mujeres
+        if page.route=="/mujeres":
+            page.views.append(
+                View(
+                    "/mujeres",
+                    controls=[
+                        AppBar(
+                            title=ft.Text("Las Mujeres en STEM",size=15),
+                            bgcolor="gray"
+                        ),
+                        ft.Container(
+                            ft.Row(
+                                controls=[
+                                    ft.Column(
+                                        controls=[
+                                            ft.ElevatedButton("volver",on_click= lambda _: page.go("/historia"))
+                                        ],alignment=MainAxisAlignment.CENTER
+                                    )
+                                ],alignment=MainAxisAlignment.CENTER
+                            ),
+                            bgcolor=page.bgcolor,
+                            expand=True
+                        ),
+                        
+                    ]
+                )
+            )
+        #vista de latam
+        if page.route=="/Latam":
+            page.views.append(
+                View(
+                    "/Latam",
+                    controls=[
+                        AppBar(
+                            title=ft.Text("Movimiento STEM en latam"),
+                            bgcolor="gray"
+                        ),
+                        ft.Container(
+                            ft.Row(
+                                controls=[
+                                    ft.Column(
+                                        controls=[
+                                            ft.ElevatedButton("volver",on_click= lambda _: page.go("/historia"))
+                                        ],alignment=MainAxisAlignment.CENTER
+                                    )
+                                ],alignment=MainAxisAlignment.CENTER
+                            ),
+                            bgcolor=page.bgcolor,
+                            expand=True
+                        )
+                    ]
                 )
             )
         page.update()
