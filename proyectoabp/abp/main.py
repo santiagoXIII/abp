@@ -2,8 +2,6 @@ import flet as ft
 from flet import AppBar, ElevatedButton, View
 from flet_core.types import MainAxisAlignment
 
-
-
 def main(page: ft.Page):
     #configuracion basica :)
     page.title= "Historia universal y STEM"
@@ -59,14 +57,14 @@ def main(page: ft.Page):
                                 controls=[
                                     ft.Column(
                                             controls=[
-                                                ft.Text("¿Que es STEM?",size=30),
-                                                ft.Text("STEM es el acrónimo en inglés que hace referencia a Science, Technology, Engineering and Mathematics (ciencia, tecnología, ingeniería y matemáticas), y que plantea la integración interdisciplinaria de estas áreas de las ciencias en un contexto asociado a la ingeniería y la tecnología. ", size=15, width=700,height=100,text_align="JUSTIFY"),
+                                                ft.Text("¿Que es STEM?",size=30,color="#05411c"),
+                                                ft.Text("STEM es el acrónimo en inglés que hace referencia a Science, Technology, Engineering and Mathematics (ciencia, tecnología, ingeniería y matemáticas), y que plantea la integración interdisciplinaria de estas áreas de las ciencias en un contexto asociado a la ingeniería y la tecnología. ", size=15,color="#05411c", width=500,height=120,text_align="JUSTIFY"),
                                                 ft.Row(controls=[
-                                                    ft.ElevatedButton("ciencia"),
-                                                    ft.ElevatedButton("tecnologia"),
-                                                    ft.ElevatedButton("ingenieria"),
-                                                    ft.ElevatedButton("matematicas")]),
-                                                ft.ElevatedButton("volver al menu",on_click= lambda _: page.go("/"))
+                                                    ft.ElevatedButton("ciencia",bgcolor="#05411c", color="#0cf596",),
+                                                    ft.ElevatedButton("tecnologia",bgcolor="#05411c", color="#0cf596",),
+                                                    ft.ElevatedButton("ingenieria",bgcolor="#05411c", color="#0cf596",),
+                                                    ft.ElevatedButton("matematicas",bgcolor="#05411c", color="#0cf596",)]),
+                                                ft.ElevatedButton("volver al menu",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/"))
                                             ],alignment=MainAxisAlignment.CENTER
                                     )
                                         ],alignment=MainAxisAlignment.CENTER
@@ -93,10 +91,10 @@ def main(page: ft.Page):
                                 controls=[
                                     ft.Column(
                                         controls=[
-                                            ft.Text("STEM en la historia universal",size=30),
-                                            ft.ElevatedButton("Las Mujeres en STEM",on_click= lambda _: page.go("/mujeres")),
-                                            ft.ElevatedButton("Movimiento STEM en latinoamerica",on_click=lambda _: page.go("/Latam")),
-                                            ft.ElevatedButton("volver al menu",on_click= lambda _: page.go("/"))
+                                            ft.Text("STEM en la historia universal",color="#05411c",size=30),
+                                            ft.ElevatedButton("Las Mujeres en STEM",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/mujeres")),
+                                            ft.ElevatedButton("Movimiento STEM en latinoamerica",bgcolor="#05411c", color="#0cf596",on_click=lambda _: page.go("/Latam")),
+                                            ft.ElevatedButton("volver al menu",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/"))
                                         ],alignment=MainAxisAlignment.CENTER
                                     )
                                 ],alignment=MainAxisAlignment.CENTER
@@ -122,12 +120,12 @@ def main(page: ft.Page):
                                 controls=[
                                     ft.Column(
                                         controls=[
-                                            ft.Text("Participantes del proyecto:",size=30),
-                                            ft.Text(">Beltran Gonzalez Bruno Javier"),
-                                            ft.Text(">Cruz Mote Romina "),
-                                            ft.Text(">Vazquez Basilio Angel Santiago"),
-                                            ft.Text(">Yepez Roman Cesar Manuel"),
-                                            ft.ElevatedButton("volver al menu",on_click= lambda _: page.go("/"))
+                                            ft.Text("Participantes del proyecto:",color="#05411c",size=30),
+                                            ft.Text(">Beltran Gonzalez Bruno Javier",color="#05411c"),
+                                            ft.Text(">Cruz Mote Romina ",color="#05411c"),
+                                            ft.Text(">Vazquez Basilio Angel Santiago",color="#05411c"),
+                                            ft.Text(">Yepez Roman Cesar Manuel",color="#05411c"),
+                                            ft.ElevatedButton("volver al menu",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/"))
                                         ],alignment=MainAxisAlignment.CENTER
                                     ),
                                 ],alignment=MainAxisAlignment.CENTER
@@ -153,7 +151,10 @@ def main(page: ft.Page):
                                 controls=[
                                     ft.Column(
                                         controls=[
-                                            ft.ElevatedButton("volver",on_click= lambda _: page.go("/historia"))
+                                            ft.Text("Las Mujeres en STEM",color="#05411c",size=30),
+                                            ft.Text("Se acerca una transformación laboral que requerirá profesionistas con habilidades vinculadas con la ciencia, la tecnología, la ingeniería y las matemáticas (STEM, por sus siglas en inglés). De acuerdo con el Foro Económico Mundial, para 2025 surgirán 97 millones de nuevos empleos adaptados a la nueva relación entre máquinas y personas. Sin embargo, en México las mujeres se han quedado atrás en la formación de estas habilidades para el futuro. En 2022, el Instituto Mexicano para la Competitividad (IMCO) encontró que solo tres de cada 10 profesionistas en STEM son mujeres.",size=15,color="#05411c",width=500,height=200,text_align="JUSTIFY"),
+                                            ft.Image(src="mujer.png"),
+                                            ft.ElevatedButton("volver",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/historia")),
                                         ],alignment=MainAxisAlignment.CENTER
                                     )
                                 ],alignment=MainAxisAlignment.CENTER
@@ -180,7 +181,8 @@ def main(page: ft.Page):
                                 controls=[
                                     ft.Column(
                                         controls=[
-                                            ft.ElevatedButton("volver",on_click= lambda _: page.go("/historia"))
+                                            ft.Text("Movimiento STEM en latinoamerica",size=30,color="#05411c",),
+                                            ft.ElevatedButton("volver",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/historia"))
                                         ],alignment=MainAxisAlignment.CENTER
                                     )
                                 ],alignment=MainAxisAlignment.CENTER
