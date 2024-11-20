@@ -1,194 +1,103 @@
 import flet as ft
-from flet import AppBar, ElevatedButton, View
 from flet_core.types import MainAxisAlignment
 
 def main(page: ft.Page):
     #configuracion basica :)
     page.title= "Historia universal y STEM"
-    page.bgcolor="#268057"
+    page.bgcolor="#4cb7b9"
     page.window_width="800"
     page.window_height="800"
+    
+    ciencia=ft.Audio(src="ciencia.mp3",volume=1,balance=0)
+    page.overlay.append(ciencia)
+    inge=ft.Audio(src="inge.mp3",volume=1,balance=0)
+    page.overlay.append(inge)
+    mate=ft.Audio(src="mate.mp3",volume=1,balance=0)
+    page.overlay.append(mate)
+    tec=ft.Audio(src="tec.mp3",volume=1,balance=0)
+    page.overlay.append(tec)
+    
+    def StopAll():
+        ciencia.pause()
+        inge.pause()
+        mate.pause()
+        tec.pause()
+        
+    def play_ciencia(e):
+        StopAll()
+        ciencia.play()
+    
+    def play_mate(e):
+        StopAll()
+        mate.play()
+    
+    def play_inge(e):
+        StopAll()
+        inge.play()
+    
+    def play_tec(e):
+        StopAll()
+        tec.play()
+    
+    volver=ft.ElevatedButton(text="volver",bgcolor="black", color="white",on_click=lambda _: page.go('/'))
+    btn1= ft.ElevatedButton(text="ciencias",bgcolor="black", color="white", on_click=play_ciencia)
+    btn2= ft.ElevatedButton(text="tecnologias",bgcolor="black", color="white", on_click=play_tec)
+    btn3= ft.ElevatedButton(text="ingenierias",bgcolor="black", color="white", on_click=play_inge)
+    btn4= ft.ElevatedButton(text="matematicas",bgcolor="black", color="white", on_click=play_mate)
+    
     def route_change(route):
         # Limpia las vistas anteriores
         page.views.clear()
-        
         # Vista de portada
         if page.route == '/':
             page.views.append(
-                View(
+                ft.View(
                     "/",
                     controls=[
-                        AppBar(
-                            title=ft.Text("La historia de la Informática",size=15),
+                        ft.AppBar(
+                            title=ft.Text("menu",size=15),
                             bgcolor="gray"
                         ),
                         ft.Container(
                             ft.Row(
                                 controls=[
-                                    ft.Column(
-                                            controls=[
-                                                ft.Text("Proyecto ABP",size=40,color="#05411c"),
-                                                ft.ElevatedButton("¿Que es Steam?",bgcolor="#05411c", color="#0cf596",on_click=lambda _: page.go('/STEAM')),
-                                                ft.ElevatedButton("Las STEM en la Historia Uiversal",bgcolor="#05411c",color="#0cf596",on_click=lambda _: page.go('/historia')),
-                                                ft.ElevatedButton("ver participantes",bgcolor="#05411c",color="#0cf596",on_click= lambda _: page.go("/participantes"))
-                                            ],alignment=MainAxisAlignment.CENTER
-                                    )
-                                        ],alignment=MainAxisAlignment.CENTER
-                                    ),
-                            bgcolor=page.bgcolor,
-                            expand=True
-                        )
-                    ],
-                    bgcolor=page.bgcolor
-                )
-            )
-        #vista de que es stem
-        if page.route == "/STEAM":
-            page.views.append(
-                View(
-                    "/STEAM",
-                    controls=[
-                        AppBar(
-                            title=ft.Text("¿Que es STEM?",size=15),
-                            bgcolor="gray"
-                        ),
-                        ft.Container(
-                            ft.Row(
+                            ft.Column(
                                 controls=[
-                                    ft.Column(
-                                            controls=[
-                                                ft.Text("¿Que es STEM?",size=30,color="#05411c"),
-                                                ft.Text("STEM es el acrónimo en inglés que hace referencia a Science, Technology, Engineering and Mathematics (ciencia, tecnología, ingeniería y matemáticas), y que plantea la integración interdisciplinaria de estas áreas de las ciencias en un contexto asociado a la ingeniería y la tecnología. ", size=15,color="#05411c", width=500,height=120,text_align="JUSTIFY"),
-                                                ft.Row(controls=[
-                                                    ft.ElevatedButton("ciencia",bgcolor="#05411c", color="#0cf596",),
-                                                    ft.ElevatedButton("tecnologia",bgcolor="#05411c", color="#0cf596",),
-                                                    ft.ElevatedButton("ingenieria",bgcolor="#05411c", color="#0cf596",),
-                                                    ft.ElevatedButton("matematicas",bgcolor="#05411c", color="#0cf596",)]),
-                                                ft.ElevatedButton("volver al menu",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/"))
-                                            ],alignment=MainAxisAlignment.CENTER
-                                    )
-                                        ],alignment=MainAxisAlignment.CENTER
-                                    ),
-                            bgcolor=page.bgcolor,
-                            expand=True
-                        )
-                    ],
-                    bgcolor=page.bgcolor
-                )
-            )
-        # vista de historia 
-        if page.route== "/historia":
-            page.views.append(
-                View(
-                    "/historia",
-                    controls=[
-                        AppBar(
-                            title=ft.Text("Las STEM en la historia universal",size=15),
-                            bgcolor="gray"
-                        ),
-                        ft.Container(
-                            ft.Row(
-                                controls=[
-                                    ft.Column(
-                                        controls=[
-                                            ft.Text("STEM en la historia universal",color="#05411c",size=30),
-                                            ft.ElevatedButton("Las Mujeres en STEM",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/mujeres")),
-                                            ft.ElevatedButton("Movimiento STEM en latinoamerica",bgcolor="#05411c", color="#0cf596",on_click=lambda _: page.go("/Latam")),
-                                            ft.ElevatedButton("volver al menu",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/"))
-                                        ],alignment=MainAxisAlignment.CENTER
-                                    )
+                                        ft.Text("Las STEM",color="white", size=60,),
+                                        ft.ElevatedButton(text="Saber mas sobre las stem",bgcolor="black", color="white",on_click=lambda _: page.go('/stem')),
+                                        ft.ElevatedButton(text="Cuestionario sobre las STEM", bgcolor="black",color="white",on_click=lambda _: page.go('/cuestionario' )),
+                                        ft.Image(src="stem.png")
+                                    ],alignment=MainAxisAlignment.CENTER
+                                )
                                 ],alignment=MainAxisAlignment.CENTER
-                            ),
-                            bgcolor=page.bgcolor,
-                            expand=True
+                            ),bgcolor=page.bgcolor,expand=True,
                         )
                     ]
                 )
             )
-        #vista de participantes
-        if page.route=="/participantes":
+        if page.route=='/stem':
             page.views.append(
-                View(
-                    "/participantes",
+                ft.View(
+                    "/stem",
                     controls=[
-                        AppBar(
-                            title=ft.Text("participantes del proyecto"),
-                            bgcolor="gray",
+                        ft.AppBar(
+                            title=ft.Text("STEM",size=15),
+                            bgcolor="gray"
                         ),
                         ft.Container(
-                            ft.Row(
+                            ft.Column(
                                 controls=[
-                                    ft.Column(
+                                    ft.Text("STEM",size=30),
+                                    ft.Text("STEM es el acrónimo en inglés que hace referencia a Science, Technology, Engineering and Mathematics (ciencia, tecnología, ingeniería y matemáticas), y que plantea la integración interdisciplinaria de estas áreas de las ciencias en un contexto asociado a la ingeniería y la tecnología.",max_lines=5),
+                                    ft.Image(src="stem2.png"),
+                                    ft.Row(
                                         controls=[
-                                            ft.Text("Participantes del proyecto:",color="#05411c",size=30),
-                                            ft.Text(">Beltran Gonzalez Bruno Javier",color="#05411c"),
-                                            ft.Text(">Cruz Mote Romina ",color="#05411c"),
-                                            ft.Text(">Vazquez Basilio Angel Santiago",color="#05411c"),
-                                            ft.Text(">Yepez Roman Cesar Manuel",color="#05411c"),
-                                            ft.ElevatedButton("volver al menu",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/"))
-                                        ],alignment=MainAxisAlignment.CENTER
+                                            btn1,btn2,btn3,btn4
+                                        ]
                                     ),
+                                    volver
                                 ],alignment=MainAxisAlignment.CENTER
-                            ),
-                            bgcolor=page.bgcolor,
-                            expand=True
-                        )
-                    ]
-                )
-            )
-        #vista mujeres
-        if page.route=="/mujeres":
-            page.views.append(
-                View(
-                    "/mujeres",
-                    controls=[
-                        AppBar(
-                            title=ft.Text("Las Mujeres en STEM",size=15),
-                            bgcolor="gray"
-                        ),
-                        ft.Container(
-                            ft.Row(
-                                controls=[
-                                    ft.Column(
-                                        controls=[
-                                            ft.Text("Las Mujeres en STEM",color="#05411c",size=30),
-                                            ft.Text("Se acerca una transformación laboral que requerirá profesionistas con habilidades vinculadas con la ciencia, la tecnología, la ingeniería y las matemáticas (STEM, por sus siglas en inglés). De acuerdo con el Foro Económico Mundial, para 2025 surgirán 97 millones de nuevos empleos adaptados a la nueva relación entre máquinas y personas. Sin embargo, en México las mujeres se han quedado atrás en la formación de estas habilidades para el futuro. En 2022, el Instituto Mexicano para la Competitividad (IMCO) encontró que solo tres de cada 10 profesionistas en STEM son mujeres.",size=15,color="#05411c",width=500,height=200,text_align="JUSTIFY"),
-                                            ft.Image(src="mujer.png"),
-                                            ft.ElevatedButton("volver",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/historia")),
-                                        ],alignment=MainAxisAlignment.CENTER
-                                    )
-                                ],alignment=MainAxisAlignment.CENTER
-                            ),
-                            bgcolor=page.bgcolor,
-                            expand=True
-                        ),
-                        
-                    ]
-                )
-            )
-        #vista de latam
-        if page.route=="/Latam":
-            page.views.append(
-                View(
-                    "/Latam",
-                    controls=[
-                        AppBar(
-                            title=ft.Text("Movimiento STEM en latam"),
-                            bgcolor="gray"
-                        ),
-                        ft.Container(
-                            ft.Row(
-                                controls=[
-                                    ft.Column(
-                                        controls=[
-                                            ft.Text("Movimiento STEM en latinoamerica",size=30,color="#05411c",),
-                                            ft.ElevatedButton("volver",bgcolor="#05411c", color="#0cf596",on_click= lambda _: page.go("/historia"))
-                                        ],alignment=MainAxisAlignment.CENTER
-                                    )
-                                ],alignment=MainAxisAlignment.CENTER
-                            ),
-                            bgcolor=page.bgcolor,
-                            expand=True
+                            ),bgcolor=page.bgcolor,expand=True,
                         )
                     ]
                 )
